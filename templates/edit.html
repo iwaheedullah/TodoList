@@ -1,0 +1,27 @@
+{% include 'header/meta.html' %}
+    <title>Edit Todo</title>
+{% include 'header/header.html' %}
+
+<div class="container custom-main pt-5">
+    <form class="row mx-5" action="{{ url_for('edit_todo', todo_id=todo.id) }}" method="POST">
+        <div class="col-lg-3"></div>
+        <div class="mb-3 col-lg-6">
+            <label for="heading" class="form-label">Todo Heading</label>
+            <input autofocus type="text" name="heading" class="form-control" id="heading" value="{{todo.heading}}">
+        </div>
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-3"></div>
+        <div class="mb-3 col-lg-6">
+            <label for="body" class="form-label">Description</label>
+            <textarea class="form-control" name="body" id="body" rows="3">{{todo.body}}</textarea>
+        </div>
+        <div class="col-lg-3"></div>
+
+        <div class="col-lg-4"></div>
+        <button type="submit" class="btn btn-primary col-lg-4 mt-3">Update Todo</button>
+        <div class="col-lg-4"></div>
+    </form>
+</div>
+
+{% include 'footer.html' %}

@@ -1,0 +1,79 @@
+{% include 'header/meta.html' %}
+    <title> Home Page </title>
+{% include 'header/header.html' %}
+
+    <div class="container custom-main pt-5">
+        <h1 class="fw-bold mt-3 fs-1">Add New Todo</h1>
+        <div class="accordion" id="todoexmple">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="todoheading">
+                <button class="fw-lighter accordion-button collapsed"
+                        type="button" data-bs-toggle="collapse"
+                        data-bs-target="#newtodo" aria-expanded="false"
+                        aria-controls="collapseTwo">
+                  Click here to add new TODO
+
+                </button>
+            </h2>
+            <div id="newtodo" class="accordion-collapse collapse"
+                 aria-labelledby="todoheading" data-bs-parent="#todoexmple">
+              <div class="accordion-body">
+              <form class="row mx-5" action="{{ url_for('HomePage') }}" method="POST">
+                    <div class="col-lg-3"></div>
+                    <div class="mb-3 col-lg-6">
+                        <label for="heading" class="form-label">Todo Heading</label>
+                        <input autofocus type="text" name="heading" class="form-control" id="heading">
+                    </div>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3"></div>
+                    <div class="mb-3 col-lg-6">
+                        <label for="body" class="form-label">Description</label>
+                        <textarea class="form-control" name="body" id="body" rows="3"></textarea>
+                    </div>
+                    <div class="col-lg-3"></div>
+
+                    <div class="col-lg-4"></div>
+                    <button type="submit" class="btn btn-primary col-lg-4 mt-3">Add Todo</button>
+                    <div class="col-lg-4"></div>
+                </form>
+              </div>
+
+          </div>
+        </div>
+       </div>
+
+
+
+        <h1 class="fw-bold mt-5 fs-1">Todos</h1>
+      {% for todo in todos %}
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed"
+                        type="button" data-bs-toggle="collapse"
+                        data-bs-target="#di{{todo.id}}" aria-expanded="false"
+                        aria-controls="collapseTwo">
+                  {{ todo.heading }}
+
+                </button>
+            </h2>
+            <div id="di{{todo.id}}" class="accordion-collapse collapse"
+                 aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  {{ todo.body}}
+              </div>
+              <div class="accordion-body">
+                  <a href="{{ url_for('edit_todo', todo_id=todo.id) }}" class="pe-3"><i class="bi bi-pencil"></i></a>
+                  <a href="{{ url_for('delete_todo', todo_id=todo.id) }}" class="pe-3"><i class="bi bi-trash"></i></a>
+                  <button type="button" class="btn btn-outline-primary btn-sm">
+                      Due Date <span class="badge text-bg-secondary"></span>
+                  </button>
+              </div>
+
+          </div>
+        </div>
+       </div>
+      {% endfor %}
+    </div>
+
+{% include 'footer.html' %}

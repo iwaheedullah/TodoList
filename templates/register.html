@@ -1,0 +1,37 @@
+{% include 'header/meta.html' %}
+    <title>Register Page</title>
+{% include 'header/header.html' %}
+
+
+    <div class="container custom-main pt-5">
+        <h1 class="fw-bold my-4 fs-1 text-center">Sign Up</h1>
+
+        <form class="row" action="{{ url_for('register') }}" method="POST">
+            <div class="col-3"></div>
+            <div class="mb-3 col-6">
+                <label for="name" class="form-label">Full Name</label>
+                <input autofocus type="text" class="form-control" id="name" name='name'">
+            </div>
+            <div class="col-3"></div>
+
+            <div class="col-3"></div>
+            <div class="mb-3 col-6">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name='email' aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="col-3"></div>
+
+            <div class="col-3"></div>
+            <div class="mb-3 col-6">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name='password' id="password">
+            </div>
+            <div class="col-3"></div>
+
+            <div class="col-3"></div>
+                <button type="submit" class="col-6 btn btn-primary mt-3">Sign Me In</button>
+            <div class="col-3"></div>
+        </form>
+    </div>
+{% include 'footer.html' %}
